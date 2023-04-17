@@ -1,2 +1,2 @@
 #!/bin/bash
-ls -ldt -- **/*(D.om[1,10])
+ls -t | head -10
