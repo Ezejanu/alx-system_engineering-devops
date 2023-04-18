@@ -1,2 +1,2 @@
 #!/bin/bash
-echo $NUM="printf("%01.2f", $start)
+printf "%.2f \n" $NUM
