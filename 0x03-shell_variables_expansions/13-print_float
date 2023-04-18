@@ -1,0 +1,2 @@
+#!/bin/bash
+echo $NUM="printf("%01.2f", $start)
