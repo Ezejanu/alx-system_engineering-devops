@@ -1,2 +1,2 @@
 #!/bin/bash
-${line:0:1} | paste -s
+cut -d' '-f1 | paste -s
