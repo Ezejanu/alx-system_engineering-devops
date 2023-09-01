@@ -1,0 +1,13 @@
+#!/usr/bin/env bash
+# This is a Bash script to display the visitor IP along with the HTTP
+# status code from the Apache log file.
+
+log_file="apache-access.log"
+
+parsed_data=$(grep 'HTTP/1\.[01]" [123].. ' "$log_file" | awk '{print $1, $9}')
+
+sorted_data=$(echo "$parsed_data" | sort)
+
+grouped_data=$(echo "$sorted_data" | uniq -c | sort -k1,1nr)
+
+echo "$grouped_data"
