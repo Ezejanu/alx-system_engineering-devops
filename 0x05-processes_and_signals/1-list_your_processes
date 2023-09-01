@@ -1,5 +1,4 @@
 #!/usr/bin/env bash
 # This is a bash script that displays a list of currently running processes.
 
-# pstree -U -p
 ps aux --forest
