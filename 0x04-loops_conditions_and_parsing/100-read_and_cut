@@ -1,0 +1,8 @@
+#!/usr/bin/env bash
+# This is a Bash script to display user information from a file
+
+filename="/etc/passwd"
+
+while IFS=: read -r username _ uid _ home _; do
+	echo "$username:$uid:/$home"
+done < "$filename"
