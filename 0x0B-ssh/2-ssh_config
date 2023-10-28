@@ -2,11 +2,11 @@
 # Configuring our SSH client
 
 # Configure SSH to use specified private key
-echo "IdentifyFile ~/.ssh/school" >> ~/.ssh/config
+#echo "IdentifyFile ~/.ssh/school" >> ~/.ssh/config
 
 # Configure SSH client to refuse to authenticate using a password
-sudo sed -i 's/PasswordAuthentication yes/PasswordAuthentication no/'\
-/etc/ssh/sshd_config
+#sudo sed -i 's/PasswordAuthentication yes/PasswordAuthentication no/'\
+#/etc/ssh/sshd_config
 
 #Restart SSH service to apply changes
-sudo service ssh restart
+#sudo service ssh restart
