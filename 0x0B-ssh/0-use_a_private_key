@@ -2,5 +2,6 @@
 # script that uses ssh to connect to your server using the private key
 # ~/.ssh/school with the user ubuntu.
 
-ssh ubuntu@413620-web-01
+#ssh ubuntu@52.3.252.193
 ssh -i ~/.ssh/school ubuntu@52.3.252.193
+#ssh -i ~/.ssh/id_rsa ubuntu@52.3.252.193
