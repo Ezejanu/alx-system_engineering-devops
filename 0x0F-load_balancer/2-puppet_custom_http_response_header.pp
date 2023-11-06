@@ -1,7 +1,9 @@
-class http_custom_header {
+class nginx_custom_header {
     package { 'nginx':
         ensure => installed,
-    }   
+    }
+
+    $hostname = $::hostname
 
     file { '/etc/nginx/sites-available/default':
         ensure => file,
@@ -15,14 +17,14 @@ class http_custom_header {
                 location / { 
                      return 200 \"Hello World!\n\";
                 }
-                add_header X-Served-By $host;
+                add_header X-Served-By $hostname;
        	}
     ",
     require => Package['nginx'],
     notify => Service['nginx'],
     }
 
-    Service { 'nginx':
+    service { 'nginx':
 	ensure    => running,
 	enable    => true,
 	subscribe => File['/etc/nginx/sites-available/default'],
