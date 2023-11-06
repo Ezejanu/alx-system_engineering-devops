@@ -1,3 +1,6 @@
+# A puppet manifest  to automate the task of creating
+# a custom HTTP header response.
+
 class nginx_custom_header {
     package { 'nginx':
         ensure => installed,
