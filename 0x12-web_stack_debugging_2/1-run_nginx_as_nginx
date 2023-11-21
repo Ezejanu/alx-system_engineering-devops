@@ -1,8 +1,7 @@
 #!/usr/bin/env bash
 # A script that configures the Nginx container to the nginx user
 
-nginx_user="nginx"
-
-sed -i "s/^user .*/user $nginx_user;/" /etc/nginx/nginx.conf
-sed -i 's/^listen .*/listen 8080;/g' /etc/nginx/sites-available/default
-service nginx restart
+chown nginx:nginx /etc/nginx/nginx.conf
+chmod 777 /etc/nginx/nginx.conf
+sed -i 's/8080/g' /etc/nginx/sites-available/default
+sudo -u service nginx restart
