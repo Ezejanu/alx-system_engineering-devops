@@ -1,12 +1,14 @@
 #!/usr/bin/python3
-# A function that queries the Reddit API and returns the number of total
-# subscribers for a given subreddit
+"""
+A function that queries the Reddit API and returns the number of total
+subscribers for a given subreddit
+"""
 
 import requests
 
 
 def number_of_subscribers(subreddit):
-    # function for fetching subreddit information
+    """function for fetching subreddit information"""
 
     url = f'https://www.reddit.com/r/{subreddit}/about.json'
 
