@@ -4,6 +4,7 @@
 exec { 'increase_hard_limit':
   command => "sed -i '/^holberton hard/s/10/30000/' /etc/security/limits.conf",
   path    => '/usr/local/bin/:/bin/'
+  }
 
 # Increasing soft limit
 exec { 'increase_soft_limit':
