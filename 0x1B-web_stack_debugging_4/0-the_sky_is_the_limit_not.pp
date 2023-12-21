@@ -13,4 +13,12 @@ class nginx_ulimit {
     value       => 'hard_limit',
     target      => '/etc/security/limits.d/nginx.conf',
     target_type => 'file',
+    notify      => Exec['restart_nginx'],
+  }
+
+  # Restart nginx
+  exec { 'restart_nginx':
+    command      => 'service nginx restart',
+    refreshonly  => true,
+  }
 }
