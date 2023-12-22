@@ -1,24 +1,13 @@
-# This is a script to fix the stack so there are no failed requests
+# Increases the amount of traffic an Nginx server can handle.
 
-class nginx_ulimit {
-
-  # Get the hard limit
-  $hard_limit = inline_template('<%= `/sbin/sysctl -n kern.ipc.maxfiles` %>')
-
-  # Set the soft limit to the hard limit
-  limits { 'nginx_limits':
-    domain      => 'nginx',
-    type        => 'soft',
-    item        => 'nofile',
-    value       => 'hard_limit',
-    target      => '/etc/security/limits.d/nginx.conf',
-    target_type => 'file',
-    notify      => Exec['restart_nginx'],
-  }
-
-  # Restart nginx
-  exec { 'restart_nginx':
-    command      => 'service nginx restart',
-    refreshonly  => true,
-  }
+# Increase the ULIMIT of the default file
+exec { 'fix--for-nginx':
+  command => '/bin/sed -i "s/15/4096/" /etc/default/nginx',
+  path    => '/usr/local/bin/:/bin/',
+}
+#->
+# Restart Nginx
+exec { 'nginx-restart':
+  command => '/etc/init.d/nginx restart',
+  path    => '/etc/init.d/',
 }

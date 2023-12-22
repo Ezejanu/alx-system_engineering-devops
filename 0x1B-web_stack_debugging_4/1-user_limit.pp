@@ -1,13 +1,13 @@
-# A script to change the OS configuration so that it is possible to login with the holberton user and open a file without any error message.
+# A script to enable the holberton user to login and open files without any errors.
 
-# Increasing hard limit
-exec { 'increase_hard_limit':
-  command => "sed -i '/^holberton hard/s/10/30000/' /etc/security/limits.conf",
+# Increase hard file limit for Holberton user.
+exec { 'increase-hard-file-limit':
+  command => "sed -i '/^holberton hard/s/5/50000/' /etc/security/limits.conf",
   path    => '/usr/local/bin/:/bin/'
-  }
+}
 
-# Increasing soft limit
-exec { 'increase_soft_limit':
-  command => "sed -i '/^holberton soft/s/5/30000/' /etc/security/limits.conf",
+# Increase soft file limit for Holberton user.
+exec { 'increase-soft-file-limit':
+  command => 'sed -i "/^holberton soft/s/4/50000/" /etc/security/limits.conf',
   path    => '/usr/local/bin/:/bin/'
 }
